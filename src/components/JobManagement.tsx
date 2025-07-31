@@ -220,19 +220,7 @@ export const JobManagement = () => {
                           <span>Company: {job.parsed_fields?.company || "N/A"}</span>
                         </div>
                       </div>
-                      {job.parsed_fields?.requiredSkills && (
-                        <div className="mt-4">
-                          <p className="text-sm font-medium text-gray-700 mb-2">Required Skills:</p>
-                          <div className="flex flex-wrap gap-2">
-                            {job.parsed_fields.requiredSkills.slice(0, 8).map((skill: string, index: number) => (
-                              <Badge key={index} variant="secondary" className="text-xs">{skill}</Badge>
-                            ))}
-                            {job.parsed_fields.requiredSkills.length > 8 && (
-                              <Badge variant="outline" className="text-xs">+{job.parsed_fields.requiredSkills.length - 8} more</Badge>
-                            )}
-                          </div>
-                        </div>
-                      )}
+
                     </div>
                     <div className="flex flex-col space-y-2 ml-4">
                       <JobDetails jobId={job.id} jobHash={job.text_hash} jobTitle={job.parsed_fields?.jobTitle || job.title || "Job Position"} />
