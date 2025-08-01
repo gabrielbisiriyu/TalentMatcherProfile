@@ -119,7 +119,7 @@ export const CVUpload = () => {
         setUploadProgress(prev => Math.min(prev + 10, 90));
       }, 200);
 
-      const response = await fetch("http://localhost:8000/parse_cv/", {
+      const response = await fetch("https://cv-job-backend-iqi4i.ondigitalocean.app/parse_cv/", {
         method: "POST",
         body: formData,
       });

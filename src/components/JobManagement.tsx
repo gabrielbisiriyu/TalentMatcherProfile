@@ -33,7 +33,7 @@ export const JobManagement = () => {
     if (!user?.id) return;
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:8000/jobs/company/${user.id}?limit=10&offset=0`);
+      const response = await fetch(`https://cv-job-backend-iqi4i.ondigitalocean.app/jobs/company/${user.id}?limit=10&offset=0`);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || "Failed to fetch jobs");
@@ -95,7 +95,7 @@ export const JobManagement = () => {
 
   const handleDeleteJob = async (jobId: string) => {
     try {
-      const response = await fetch(`http://localhost:8000/delete_job/${jobId}`, { method: "DELETE" });
+      const response = await fetch(`https://cv-job-backend-iqi4i.ondigitalocean.app/delete_job/${jobId}`, { method: "DELETE" });
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || "Failed to delete job");
@@ -112,7 +112,7 @@ export const JobManagement = () => {
   const handleFindCandidates = async (jobId: string, jobHash: string) => {
     setMatchingJobId(jobId);
     try {
-      const response = await fetch(`http://localhost:8000/match_job_to_cvs/?job_hash=${jobHash}&top_n=10`, { method: "POST" });
+      const response = await fetch(`https://cv-job-backend-iqi4i.ondigitalocean.app/match_job_to_cvs/?job_hash=${jobHash}&top_n=10`, { method: "POST" });
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || "Matching failed");
@@ -132,7 +132,7 @@ export const JobManagement = () => {
   const handleRankApplicants = async (jobId: string) => {
     setRankingJobId(jobId);
     try {
-      const response = await fetch(`http://localhost:8000/rank_applicants/?job_id=${jobId}&top_n=10`, { method: "GET" });
+      const response = await fetch(`https://cv-job-backend-iqi4i.ondigitalocean.app/rank_applicants/?job_id=${jobId}&top_n=10`, { method: "GET" });
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || "Failed to rank applicants");

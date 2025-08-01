@@ -95,8 +95,8 @@ export const MatchingResults = () => {
     try {
       const hashToUse = isCandidate ? candidateData.cv_hash : cvHash;
       const endpoint = isCandidate 
-        ? `http://localhost:8000/match_cv_to_jobs/?cv_hash=${hashToUse}&top_n=10`
-        : `http://localhost:8000/match_job_to_cvs/?job_hash=${hashToUse}&top_n=10`;
+        ? `https://cv-job-backend-iqi4i.ondigitalocean.app/match_cv_to_jobs/?cv_hash=${hashToUse}&top_n=10`
+        : `https://cv-job-backend-iqi4i.ondigitalocean.app/match_job_to_cvs/?job_hash=${hashToUse}&top_n=10`;
 
       const response = await fetch(endpoint, {
         method: "POST",
@@ -138,7 +138,7 @@ export const MatchingResults = () => {
     setLoadingApplications(prev => new Set(prev).add(jobId));
 
     try {
-      const response = await fetch(`http://localhost:8000/apply_to_job/?cv_id=${candidateData.cv_id}&job_id=${jobId}`, {
+      const response = await fetch(`https://cv-job-backend-iqi4i.ondigitalocean.app/apply_to_job/?cv_id=${candidateData.cv_id}&job_id=${jobId}`, {
         method: "POST",
       });
 
@@ -183,7 +183,7 @@ export const MatchingResults = () => {
     setLoadingApplications(prev => new Set(prev).add(jobId));
 
     try {
-      const response = await fetch(`http://localhost:8000/delete_application/?cv_id=${candidateData.cv_id}&job_id=${jobId}`, {
+      const response = await fetch(`https://cv-job-backend-iqi4i.ondigitalocean.app/delete_application/?cv_id=${candidateData.cv_id}&job_id=${jobId}`, {
         method: "DELETE",
       });
 
